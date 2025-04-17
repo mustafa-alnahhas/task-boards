@@ -1,0 +1,84 @@
+<div class="task-board-container">
+    <mat-toolbar color="primary" class="board-header">
+      <span class="big-font">Task Management Board</span>
+      <span class="spacer"></span>
+      <button mat-raised-button 
+              color="primary"
+              class="custom-primary-button main-font"
+              (click)="openTaskForm()">
+        <mat-icon>add</mat-icon> Add Task
+      </button>
+    </mat-toolbar>
+  
+    <div class="board-content">
+      <ng-container *ngIf="(loading$ | async); else content">
+        <div class="loading-spinner">
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
+      </ng-container>
+  
+      <ng-template #content>
+        <div class="board-columns" cdkDropListGroup>
+          <!-- To Do Column -->
+          <div class="column" cdkDropList
+          [cdkDropListData]="(todoTasks$ | async) || []"
+          (cdkDropListDropped)="onDrop($event, TaskStatus.TODO)">
+            <h2 class="column-header to-do main-font">
+              <mat-icon>pending_actions</mat-icon> To Do
+            </h2>
+            <div class="task-list">
+              <div *ngFor="let task of todoTasks$ | async" 
+                   cdkDrag
+                   [cdkDragData]="task"
+                   class="task-card mat-elevation-z2">
+                <app-task-card [task]="task"
+                              (edit)="openTaskForm(task)"
+                              >
+                </app-task-card>
+              </div>
+            </div>
+          </div>
+  
+          <!-- In Progress Column -->
+          <div class="column" cdkDropList
+               [cdkDropListData]="(inProgressTasks$ | async) || []"
+               (cdkDropListDropped)="onDrop($event, TaskStatus.IN_PROGRESS)">
+            <h2 class="column-header in-progress main-font">
+              <mat-icon>build_circle</mat-icon> In Progress
+            </h2>
+            <div class="task-list">
+              <div *ngFor="let task of inProgressTasks$ | async" 
+                   cdkDrag
+                   [cdkDragData]="task"
+                   class="task-card mat-elevation-z2">
+                <app-task-card [task]="task"
+                              (edit)="openTaskForm(task)"
+                              >
+                </app-task-card>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Done Column -->
+          <div class="column" cdkDropList
+               [cdkDropListData]="(doneTasks$ | async) || []"
+               (cdkDropListDropped)="onDrop($event, TaskStatus.DONE)">
+            <h2 class="column-header done main-font">
+              <mat-icon>check_circle</mat-icon> Done
+            </h2>
+            <div class="task-list">
+              <div *ngFor="let task of doneTasks$ | async" 
+                   cdkDrag
+                   [cdkDragData]="task"
+                   class="task-card mat-elevation-z2">
+                <app-task-card [task]="task"
+                              (edit)="openTaskForm(task)"
+                              >
+                </app-task-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>

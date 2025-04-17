@@ -1,0 +1,2 @@
+execute the following to run the json-server:
+npx json-server --watch src/assets/mock-data/tasks.json --port 3000

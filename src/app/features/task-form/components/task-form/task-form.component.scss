@@ -1,0 +1,59 @@
+ /* Status select dropdown styling */
+.mat-select-panel {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    margin-top: 8px !important;
+    border: 1px solid rgba(0, 0, 0, 0.05 )!important;
+  
+    /* Option items */
+    .mat-option {
+      color: #3f51b5 !important;
+      padding: 12px 16px !important;
+      transition: all 0.2s ease !important;
+  
+      /* Icon styling */
+      mat-icon {
+        margin-right: 12px !important;
+        vertical-align: middle !important;
+      }
+  
+      /* Hover state */
+      &:hover:not(.mat-option-disabled) {
+        background: rgba(63, 81, 181, 0.08) !important;
+      }
+  
+      /* Selected state */
+      &.mat-selected:not(.mat-option-multiple) {
+        background: rgba(63, 81, 181, 0.1) !important;
+        font-weight: 500 !important;
+  
+        &:not(.mat-option-disabled) {
+          color: #3f51b5 !important;
+        }
+      }
+    }
+  
+    /* Active/focused state */
+    .mat-active {
+      background: rgba(63, 81, 181, 0.15) !important;
+    }
+  }
+
+  .form-row {
+    padding-top: 5px !important;
+    display: flex !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .select-background{
+    background-color: whitesmoke !important;
+  }
+
+
+
+
+
+  
+  

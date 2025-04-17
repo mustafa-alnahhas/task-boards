@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Custom calendar container */
+.mat-datepicker-content {
+    background: linear-gradient(145deg, #f5f7fa 0%, #e4e8eb 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    
+    /* Calendar body background */
+    .mat-calendar {
+      background-color: transparent;
+      
+      /* Header styling */
+      .mat-calendar-header {
+        background: linear-gradient(to right, #3f51b5, #5c6bc0);
+        color: white;
+        padding: 16px;
+        
+        .mat-calendar-controls {
+          margin-top: 8px;
+        }
+      }
+      
+      /* Weekday headers */
+      .mat-calendar-table-header {
+        color: #5c6bc0;
+        padding: 8px 0;
+        font-weight: 500;
+      }
+      
+      /* Calendar body cells */
+      .mat-calendar-body {
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(5px);
+        padding: 8px;
+        
+        /* Individual cells */
+        .mat-calendar-body-cell {
+          padding: 4px;
+          
+          /* Cell content */
+          .mat-calendar-body-cell-content {
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+            
+            &:hover {
+              background-color: #e3f2fd;
+              border-color: #bbdefb;
+            }
+          }
+          
+          /* Selected date */
+          .mat-calendar-body-selected {
+            background: linear-gradient(to right, #3f51b5, #5c6bc0);
+            color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          }
+          
+          /* Today's date */
+          .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+            border-color: #3f51b5;
+          }
+        }
+      }
+      
+      /* Navigation arrows */
+      .mat-calendar-arrow {
+        border-top-color: white;
+      }
+      
+      /* Month/year label */
+      .mat-calendar-period-button {
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+
+
+
+  /* Status field specific styling */
+  .mat-form-field.mat-form-field-status {
+    .mat-select-arrow {
+      color: #3f51b5;
+    }
+  
+    .mat-form-field-label {
+      color: #3f51b5;
+    }
+  
+    .mat-form-field-outline {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 4px;
+    }
+  }
+
+
+  /* Status-specific colors */
+.mat-option[value="To Do"] {
+    mat-icon { color: #ff9800; } /* Orange */
+    &.mat-selected { background: rgba(255, 152, 0, 0.1); }
+  }
+  
+  .mat-option[value="In Progress"] {
+    mat-icon { color: #2196f3; } /* Blue */
+    &.mat-selected { background: rgba(33, 150, 243, 0.1); }
+  }
+  
+  .mat-option[value="Done"] {
+    mat-icon { color: #4caf50; } /* Green */
+    &.mat-selected { background: rgba(76, 175, 80, 0.1); }
+  }
+
+
+  .custom-primary-button {
+    background-color: #1976d2 !important; /* Material Blue 700 */
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 20px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 6px rgba(25, 118, 210, 0.4) !important;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease !important;
+  }
+
+
+  ::ng-deep {
+    .cdk-overlay-pane.mat-mdc-select-panel-above {
+      .mat-mdc-select-panel {
+        background-color: #f0f4ff !important;
+        border-radius: 6px !important;
+      }
+    }
+  }
+
+  .error-message {
+    color: red !important;
+  }
+
+  .main-font {
+    font-family: 'Poppins', sans-serif !important;
+  }
+  

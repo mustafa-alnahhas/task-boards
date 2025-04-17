@@ -1,0 +1,20 @@
+.task-card {
+    margin: 8px;
+    transition: box-shadow 0.2s ease;
+  
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .due-date {
+      &.overdue {
+        color: #f44336; // Red color for overdue tasks
+        font-weight: bold;
+      }
+    }
+  
+    .task-description {
+      white-space: pre-wrap;
+      margin-top: 8px;
+    }
+  }

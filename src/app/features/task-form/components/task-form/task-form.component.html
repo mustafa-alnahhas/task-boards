@@ -1,0 +1,67 @@
+<h1 mat-dialog-title class="main-font">{{ isEditMode ? 'Edit Task' : 'Create New Task' }}</h1>
+
+<div mat-dialog-content>
+    
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="task-form">
+
+    <div class="form-row">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label class="main-font">Title</mat-label>
+      <input matInput formControlName="title" required>
+      <mat-error *ngIf="form.get('title')?.hasError('required')" class="error-message main-font">
+        Title is required
+      </mat-error>
+    </mat-form-field>
+
+    
+    
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label class="main-font">Due Date</mat-label>
+        <input matInput 
+               [matDatepicker]="picker" 
+               formControlName="dueDate"
+               [min]="minDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('dueDate')?.hasError('required')" class="error-message main-font">
+          Due date is required
+        </mat-error>
+        <mat-error *ngIf="form.get('dueDate')?.hasError('pastDate')" class="error-message main-font">
+          Due date must be in the future
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="outline" >
+        <mat-label class="main-font">Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width" *ngIf="isEditMode">
+      <mat-label class="main-font">Status</mat-label>
+      <mat-select formControlName="status" >
+        <mat-option class="main-font select-background" *ngFor="let value of statusOptions" [value]="value">
+          {{ value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+</div>
+
+   
+
+    <div mat-dialog-actions align="end">
+      <button class="main-font" mat-button type="button" (click)="closeDialog()" >
+        Cancel
+      </button>
+      <button  mat-raised-button 
+              color="primary" 
+              type="submit"
+              [disabled]="form.invalid"
+              class="custom-primary-button main-font">
+        {{ isEditMode ? 'Update' : 'Create' }}
+      </button>
+    </div>
+  </form>
+</div>
